@@ -14,33 +14,58 @@ body {
   /* padding: 30px 5%; */
   display: grid;
   grid-template-columns: 300px 1fr;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .tab-bar {
   background-color: whitesmoke;
-  padding: 10px 30px;
+  padding: 20px 30px;
   justify-self: stretch;
 }
 
 .task-content {
   background-color: lightgrey;
-  padding: 10px 20px;
+  padding: 20px 30px;
   justify-self: stretch;
+}
+
+.addTaskBtn {
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 10px;
+  padding: 5px 0px;
+}
+
+.addTaskBtn:hover {
+  background-color: whitesmoke;
 }
 
 .home,
 .projects {
   display: grid;
   align-items: center;
-  font-size: 55px;
+  font-size: 40px;
   font-weight: bold;
   justify-content: start;
 }
 
 .home div,
 .projects div {
-  font-size: 30px;
+  font-size: 25px;
   justify-self: start;
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.home div:hover,
+.projects div:hover {
+  text-decoration: underline;
+}
+
+.taskInput {
+  display: grid;
+  justify-content: stretch;
+  padding: 5px;
 }

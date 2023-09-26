@@ -1,6 +1,9 @@
 import Task from "./functions/task";
 import Project from "./functions/project";
+import { addTaskBtn, clearTask } from "./functions/domManipulator";
 import "./css/style.css";
+
+addTaskBtn();
 
 let task1 = new Task("test1", "this is a test", "27/12/2023", "Low");
 let task2 = new Task("test2", "this is a second test", "20/03/2023", "Low");
