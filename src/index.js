@@ -1,10 +1,14 @@
 import Task from "./functions/task";
 import Project from "./functions/project";
+import "./css/style.css";
 
-let task1 = new Task("test1", "this is a test", "27/12/2023", "low");
-let task2 = new Task("test2", "this is a second test", "27/12/2023", "low");
+let task1 = new Task("test1", "this is a test", "27/12/2023", "Low");
+let task2 = new Task("test2", "this is a second test", "20/03/2023", "Low");
+let task3 = new Task("incorrect", "asd", "asd/22d/aaf", "High");
 
 console.log(task1);
+console.log(task3);
+task1.toggleCheck();
 
 let project1 = new Project("Test Project 1");
 project1.addTask(task1);
