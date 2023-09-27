@@ -29,6 +29,10 @@ const addTaskInput = function () {
   ></textarea>
   <label for="taskDate">Date</label>
   <input type="date" id="taskDate" name="taskDate" />
+  <div class= "addTaskChoiceBtn">
+    <button class="addTaskConfirm">Confirm</button>
+    <button class="addTaskCancel">Cancel</button>
+  </div>
 </div>`;
 
   document.querySelector(".task-content").appendChild(inputTask);
