@@ -65,6 +65,10 @@ body {
 }
 
 .taskInput {
+  display: none;
+}
+
+.taskInput.active {
   display: grid;
   justify-content: stretch;
   padding: 5px;
