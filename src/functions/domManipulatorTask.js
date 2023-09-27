@@ -19,6 +19,13 @@ const addTaskInput = function () {
   ></textarea>
   <label for="taskDate">Date</label>
   <input type="date" id="taskDate" name="taskDate" />
+  <label for="priority">Select a priotiry:</label>
+  <select name="priority" id="priority">
+    <option value="">--Please choose an priority--</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
   <div class= "addTaskChoiceBtn">
     <button class="addTaskConfirm">Confirm</button>
     <button class="addTaskCancel">Cancel</button>
@@ -63,10 +70,12 @@ const clearAddTaskValue = function () {
   const title = document.querySelector("#taskName");
   const description = document.querySelector("#description");
   const date = document.querySelector("#taskDate");
+  const priority = document.querySelector("#priority");
 
   title.value = "";
   description.value = "";
   date.value = "";
+  priority.value = "";
 };
 
 export { addTaskInput };
