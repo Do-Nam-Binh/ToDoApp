@@ -1,14 +1,20 @@
+import { loadAllTask, clearTask } from "./domManipulatorTask";
+
 const addProjectInput = function () {
   const projectContainer = document.querySelector(".projects");
 
-  projectContainer.innerHTML += `<div class="addProjectBtn">Add Project</div>
-  <div class="projectInput">
-  <input type="text" id="projectName" name="projectName" />
-  <div class= "addProjectChoiceBtn">
-    <button class="addProjectConfirm">Confirm</button>
-    <button class="addProjectCancel">Cancel</button>
-  </div>
-</div>`;
+  projectContainer.insertAdjacentHTML(
+    "beforeend",
+    `<div class="addProjectBtn">Add Project</div>
+    <div class="projectInput">
+    <input type="text" id="projectName" name="projectName" />
+    <div class= "addProjectChoiceBtn">
+      <button class="addProjectConfirm">Confirm</button>
+      <button class="addProjectCancel">Cancel</button>
+    </div>
+  </div>`
+  );
+
   addProjectBtnInit();
   addProjectConfirmInit();
   addProjectCancelInit();
@@ -50,25 +56,34 @@ const clearAddProjectValue = function () {
 
 const loadAllProjects = function (projectArr) {
   projectArr.forEach((project) => {
-    loadProjects(project.name);
+    loadProjects(project);
   });
   addProjectInput();
 };
 
-const loadProjects = function (name) {
+const loadProjects = function (project) {
   const userProjects = document.querySelector(".projects");
-  userProjects.innerHTML += ` 
-      <div class="project" data-project-button>
-        <div class="left-project-panel">
-          <i class="fas fa-tasks"></i>
-          <span>${name}</span>
-        </div>
-        <div class="right-project-panel">
-          <i class="fas fa-times"></i>
-        </div>
-      </div>`;
+  const projectDOM = document.createElement("div");
+  projectDOM.classList.add("project");
+  projectDOM.textContent = `${project.name}`;
 
-  //   addProjectInput();
+  //   userProjects.innerHTML += `
+  //       <div class="project" data-project-button>
+  //         <div class="left-project-panel">
+  //           <i class="fas fa-tasks"></i>
+  //           <span>${project.name}</span>
+  //         </div>
+  //         <div class="right-project-panel">
+  //           <i class="fas fa-times"></i>
+  //         </div>
+  //       </div>`;
+
+  projectDOM.addEventListener("click", function () {
+    clearTask();
+    console.log(project);
+    loadAllTask(project);
+  });
+  userProjects.appendChild(projectDOM);
 };
 
 export { loadAllProjects };

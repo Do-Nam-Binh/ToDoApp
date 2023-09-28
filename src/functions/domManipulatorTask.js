@@ -93,4 +93,4 @@ const loadTask = function (task) {
   </div>`;
 };
 
-export { loadAllTask };
+export { loadAllTask, clearTask };
