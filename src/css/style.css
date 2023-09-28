@@ -29,17 +29,11 @@ body {
   justify-self: stretch;
 }
 
-.addTaskBtn {
+.task {
   font-size: 20px;
   text-align: center;
-  border-radius: 10px;
-  border: 2px solid black;
   margin: 10px;
   padding: 5px 0px;
-}
-
-.addTaskBtn:hover {
-  background-color: whitesmoke;
 }
 
 .home,
@@ -124,6 +118,19 @@ body {
 
 .addProjectCancel:hover {
   background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
+.addTaskBtn {
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid black;
+  margin: 10px;
+  padding: 5px 0px;
+}
+
+.addTaskBtn:hover {
+  background-color: whitesmoke;
 }
 
 .taskInput {

@@ -78,4 +78,19 @@ const clearAddTaskValue = function () {
   priority.value = "";
 };
 
-export { addTaskInput };
+const loadAllTask = function (project) {
+  project.tasks.forEach((task) => {
+    loadTask(task);
+  });
+  addTaskInput();
+};
+
+const loadTask = function (task) {
+  const taskContent = document.querySelector(".task-content");
+  taskContent.innerHTML += `<div class="task">
+  <span class="taskTitle">${task.title}</span>
+  <span class="taskDate">${task.date}</span>
+  </div>`;
+};
+
+export { loadAllTask };
