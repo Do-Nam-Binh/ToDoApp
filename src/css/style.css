@@ -29,6 +29,16 @@ body {
   justify-self: stretch;
 }
 
+.projectDisplay {
+  border: 2px solid black;
+  background-color: whitesmoke;
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .task {
   font-size: 20px;
   text-align: center;

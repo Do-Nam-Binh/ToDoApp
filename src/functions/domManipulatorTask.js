@@ -86,6 +86,11 @@ const clearAddTaskValue = function () {
 
 const loadAllTask = function (project) {
   clearTask();
+  const taskContent = document.querySelector(".task-content");
+  const projectDisplay = document.createElement("div");
+  projectDisplay.classList.add("projectDisplay");
+  projectDisplay.textContent = project.name;
+  taskContent.appendChild(projectDisplay);
   project.tasks.forEach((task) => {
     loadTask(task);
   });
