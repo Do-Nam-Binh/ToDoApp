@@ -7,7 +7,7 @@ const Task = function (title, description, dueDate, priority) {
 
   task.title = title;
   task.description = description;
-  task.dueDate = new Date(dueDate);
+  task.dueDate = dueDate;
   task.priority = priority;
   task.checked = Boolean(false);
 

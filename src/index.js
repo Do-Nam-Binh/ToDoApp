@@ -31,4 +31,3 @@ project1.tasks.forEach((element) => {
 });
 
 loadAllProjects(projectArr);
-loadAllTask(project1);

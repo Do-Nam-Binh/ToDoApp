@@ -67,17 +67,6 @@ const loadProjects = function (project) {
   projectDOM.classList.add("project");
   projectDOM.textContent = `${project.name}`;
 
-  //   userProjects.innerHTML += `
-  //       <div class="project" data-project-button>
-  //         <div class="left-project-panel">
-  //           <i class="fas fa-tasks"></i>
-  //           <span>${project.name}</span>
-  //         </div>
-  //         <div class="right-project-panel">
-  //           <i class="fas fa-times"></i>
-  //         </div>
-  //       </div>`;
-
   projectDOM.addEventListener("click", function () {
     clearTask();
     console.log(project);

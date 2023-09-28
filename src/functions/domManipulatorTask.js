@@ -1,3 +1,8 @@
+import Task from "./task";
+import Project from "./project";
+
+let currentProject;
+
 const clearTask = function () {
   document.querySelector(".task-content").innerHTML = ``;
 };
@@ -51,9 +56,10 @@ const addTaskConfirmInit = function () {
   const taskInput = document.querySelector(".taskInput");
   confirmBtn.addEventListener("click", () => {
     //Add code to create task here
-
+    createTask(currentProject);
     clearAddTaskValue();
     taskInput.classList.remove("active");
+    loadAllTask(currentProject);
   });
 };
 
@@ -79,9 +85,12 @@ const clearAddTaskValue = function () {
 };
 
 const loadAllTask = function (project) {
+  clearTask();
   project.tasks.forEach((task) => {
     loadTask(task);
   });
+  currentProject = project;
+  console.log(currentProject);
   addTaskInput();
 };
 
@@ -91,6 +100,22 @@ const loadTask = function (task) {
   <span class="taskTitle">${task.title}</span>
   <span class="taskDate">${task.date}</span>
   </div>`;
+};
+
+const createTask = function (project) {
+  const taskName = document.querySelector("#taskName");
+  const description = document.querySelector("#description");
+  const taskDate = document.querySelector("#taskDate");
+  const priority = document.querySelector("#priority");
+
+  const task = new Task(
+    taskName.value,
+    description.value,
+    taskDate.value,
+    priority.value
+  );
+
+  project.tasks.push(task);
 };
 
 export { loadAllTask, clearTask };
