@@ -1,7 +1,7 @@
 const Task = function (title, description, dueDate, priority) {
-  if (isNaN(new Date(dueDate))) {
-    throw Error("Invalid Date");
-  }
+  //   if (isNaN(new Date(dueDate))) {
+  //     throw Error("Invalid Date");
+  //   }
 
   let task = {};
 

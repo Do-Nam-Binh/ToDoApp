@@ -48,4 +48,27 @@ const clearAddProjectValue = function () {
   projectName.value = "";
 };
 
-export { addProjectInput };
+const loadAllProjects = function (projectArr) {
+  projectArr.forEach((project) => {
+    loadProjects(project.name);
+  });
+  addProjectInput();
+};
+
+const loadProjects = function (name) {
+  const userProjects = document.querySelector(".projects");
+  userProjects.innerHTML += ` 
+      <div class="project" data-project-button>
+        <div class="left-project-panel">
+          <i class="fas fa-tasks"></i>
+          <span>${name}</span>
+        </div>
+        <div class="right-project-panel">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>`;
+
+  //   addProjectInput();
+};
+
+export { loadAllProjects };

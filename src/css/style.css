@@ -69,7 +69,6 @@ body {
   font-size: 20px;
   text-align: center;
   font-weight: 300;
-  margin-top: 10px;
   padding: 5px 10px;
   border-radius: 10px;
 }
@@ -80,6 +79,7 @@ body {
 
 .projectInput {
   display: none;
+  margin-top: 5px;
 }
 .projectInput.active {
   display: grid;
@@ -106,6 +106,24 @@ body {
   padding: 5px 0px;
   font-size: 15px;
   font-weight: 300;
+}
+
+.addProjectConfirm {
+  background-color: rgb(2, 157, 2);
+  font-weight: bold;
+}
+
+.addProjectConfirm:hover {
+  background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+}
+
+.addProjectCancel {
+  background-color: red;
+  font-weight: bold;
+}
+
+.addProjectCancel:hover {
+  background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
 }
 
 .taskInput {
