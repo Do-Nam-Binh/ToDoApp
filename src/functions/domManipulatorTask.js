@@ -85,7 +85,7 @@ const clearAddTaskValue = function () {
 };
 
 const loadAllTask = function (project) {
-  clearTask();
+  // clearTask();
   const taskContent = document.querySelector(".task-content");
   const projectDisplay = document.createElement("div");
   projectDisplay.classList.add("projectDisplay");
