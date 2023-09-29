@@ -44,6 +44,20 @@ body {
   text-align: center;
   margin: 10px;
   padding: 5px 0px;
+  display: grid;
+  grid-template-columns: 80% 180px;
+  align-content: center;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.taskTitle {
+  justify-self: start;
+  margin-left: 20px;
+}
+
+.taskDate {
+  justify-self: end;
 }
 
 .home,
@@ -113,7 +127,7 @@ body {
 }
 
 .addProjectConfirm {
-  background-color: rgb(2, 157, 2);
+  background-color: rgba(2, 157, 2, 0.6);
   font-weight: bold;
 }
 
@@ -122,7 +136,7 @@ body {
 }
 
 .addProjectCancel {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.6);
   font-weight: bold;
 }
 
@@ -180,7 +194,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   font-size: 20px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.6);
 }
 
 .addTaskCancel:hover {
@@ -191,7 +205,7 @@ body {
   display: inline-block;
   padding: 10px 20px;
   font-size: 20px;
-  background-color: rgb(2, 157, 2);
+  background-color: rgba(2, 157, 2, 0.6);
 }
 
 .addTaskConfirm:hover {
