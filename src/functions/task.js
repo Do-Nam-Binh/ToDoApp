@@ -1,13 +1,14 @@
 const Task = function (title, description, dueDate, priority) {
-  //   if (isNaN(new Date(dueDate))) {
-  //     throw Error("Invalid Date");
-  //   }
+  const dateUnformatted = new Date(dueDate);
+  const year = dateUnformatted.getFullYear();
+  const month = dateUnformatted.getMonth() + 1;
+  const day = dateUnformatted.getDate();
 
   let task = {};
 
   task.title = title;
   task.description = description;
-  task.dueDate = dueDate;
+  task.dueDate = [year, month, day].join("-");
   task.priority = priority;
   task.checked = Boolean(false);
 

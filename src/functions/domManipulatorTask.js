@@ -103,7 +103,7 @@ const loadTask = function (task) {
   const taskContent = document.querySelector(".task-content");
   taskContent.innerHTML += `<div class="task">
   <span class="taskTitle">${task.title}</span>
-  <span class="taskDate">${task.date}</span>
+  <span class="taskDate">${task.dueDate}</span>
   </div>`;
 };
 
@@ -111,6 +111,7 @@ const createTask = function (project) {
   const taskName = document.querySelector("#taskName");
   const description = document.querySelector("#description");
   const taskDate = document.querySelector("#taskDate");
+  // const dateFormatted = new Date(taskDate.value);
   const priority = document.querySelector("#priority");
 
   const task = new Task(
