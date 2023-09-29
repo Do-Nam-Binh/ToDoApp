@@ -101,10 +101,20 @@ const loadAllTask = function (project) {
 
 const loadTask = function (task) {
   const taskContent = document.querySelector(".task-content");
-  taskContent.innerHTML += `<div class="task">
+  const taskDiv = document.createElement("div");
+  taskDiv.classList.add("task");
+  if (task.priority == "Low") {
+    taskDiv.classList.add("lowPriority");
+  } else if (task.priority == "Medium") {
+    taskDiv.classList.add("mediumPriority");
+  } else if (task.priority == "High") {
+    taskDiv.classList.add("highPriority");
+  }
+  taskDiv.innerHTML += `
   <span class="taskTitle">${task.title}</span>
   <span class="taskDate">${task.dueDate}</span>
-  </div>`;
+`;
+  taskContent.appendChild(taskDiv);
 };
 
 const createTask = function (project) {

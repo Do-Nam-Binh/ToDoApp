@@ -49,6 +49,7 @@ body {
   align-content: center;
   border: 1px solid black;
   padding: 10px;
+  border-radius: 10px;
 }
 
 .taskTitle {
@@ -58,6 +59,16 @@ body {
 
 .taskDate {
   justify-self: end;
+}
+
+.task.lowPriority {
+  background-color: rgba(88, 194, 88, 0.6);
+}
+.task.mediumPriority {
+  background-color: rgba(67, 245, 245, 0.6);
+}
+.task.highPriority {
+  background-color: rgba(244, 64, 64, 0.6);
 }
 
 .home,

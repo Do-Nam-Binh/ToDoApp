@@ -1,4 +1,12 @@
 import { loadAllTask, clearTask } from "./domManipulatorTask";
+import Project from "./project";
+
+let projectList = [];
+
+const clearProjects = function () {
+  const projects = document.querySelector(".projects");
+  projects.innerHTML = "Projects";
+};
 
 const addProjectInput = function () {
   const projectContainer = document.querySelector(".projects");
@@ -33,7 +41,8 @@ const addProjectConfirmInit = function () {
   const projectInput = document.querySelector(".projectInput");
   confirmBtn.addEventListener("click", () => {
     //Add code to create project here
-
+    createProject(projectList);
+    loadAllProjects(projectList);
     clearAddProjectValue();
     projectInput.classList.remove("active");
   });
@@ -55,6 +64,8 @@ const clearAddProjectValue = function () {
 };
 
 const loadAllProjects = function (projectArr) {
+  clearProjects();
+  projectList = projectArr;
   projectArr.forEach((project) => {
     loadProjects(project);
   });
@@ -73,6 +84,14 @@ const loadProjects = function (project) {
     loadAllTask(project);
   });
   userProjects.appendChild(projectDOM);
+};
+
+const createProject = function (projectArr) {
+  const projectName = document.querySelector("#projectName");
+
+  const project = new Project(projectName.value);
+
+  projectArr.push(project);
 };
 
 export { loadAllProjects };
