@@ -69,6 +69,7 @@ const loadAllProjects = function (projectArr) {
   projectArr.forEach((project) => {
     loadProjects(project);
   });
+  addEventAllProjects();
   addProjectInput();
 };
 
@@ -92,6 +93,40 @@ const createProject = function (projectArr) {
   const project = new Project(projectName.value);
 
   projectArr.push(project);
+};
+
+const addEventAllProjects = function () {
+  const allProject = document.querySelector(".allProjectTasks");
+  allProject.addEventListener("click", loadAllProjectTask);
+};
+
+const loadAllProjectTask = function () {
+  clearTask();
+  const taskContent1 = document.querySelector(".task-content");
+  const projectDisplay = document.createElement("div");
+  projectDisplay.classList.add("projectDisplay");
+  projectDisplay.textContent = "All Tasks";
+  taskContent1.appendChild(projectDisplay);
+
+  projectList.forEach((project) => {
+    project.tasks.forEach((task) => {
+      const taskContent = document.querySelector(".task-content");
+      const taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+      if (task.priority == "Low") {
+        taskDiv.classList.add("lowPriority");
+      } else if (task.priority == "Medium") {
+        taskDiv.classList.add("mediumPriority");
+      } else if (task.priority == "High") {
+        taskDiv.classList.add("highPriority");
+      }
+      taskDiv.innerHTML += `
+                    <span class="taskTitle">${task.title}</span>
+                    <span class="taskDate">${task.dueDate}</span>
+                    `;
+      taskContent.appendChild(taskDiv);
+    });
+  });
 };
 
 export { loadAllProjects };
