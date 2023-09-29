@@ -70,6 +70,7 @@ const loadAllProjects = function (projectArr) {
     loadProjects(project);
   });
   addEventAllProjects();
+  addEventToday();
   addProjectInput();
 };
 
@@ -95,6 +96,7 @@ const createProject = function (projectArr) {
   projectArr.push(project);
 };
 
+//Functions to handle "All Tasks" tab
 const addEventAllProjects = function () {
   const allProject = document.querySelector(".allProjectTasks");
   allProject.addEventListener("click", loadAllProjectTask);
@@ -125,6 +127,49 @@ const loadAllProjectTask = function () {
                     <span class="taskDate">${task.dueDate}</span>
                     `;
       taskContent.appendChild(taskDiv);
+    });
+  });
+};
+
+//Functions to handle "Today" tab
+const addEventToday = function () {
+  const todayDOM = document.querySelector(".todayTask");
+  todayDOM.addEventListener("click", loadTodayTask);
+};
+
+const loadTodayTask = function () {
+  clearTask();
+  const taskContent1 = document.querySelector(".task-content");
+  const projectDisplay = document.createElement("div");
+  projectDisplay.classList.add("projectDisplay");
+  projectDisplay.textContent = "Today Tasks";
+  taskContent1.appendChild(projectDisplay);
+
+  projectList.forEach((project) => {
+    project.tasks.forEach((task) => {
+      const taskContent = document.querySelector(".task-content");
+      const taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+      if (task.priority == "Low") {
+        taskDiv.classList.add("lowPriority");
+      } else if (task.priority == "Medium") {
+        taskDiv.classList.add("mediumPriority");
+      } else if (task.priority == "High") {
+        taskDiv.classList.add("highPriority");
+      }
+      const today = new Date();
+      const todayFomatted = [
+        today.getFullYear(),
+        today.getMonth() + 1,
+        today.getDate(),
+      ].join("-");
+      if (todayFomatted == task.dueDate) {
+        taskDiv.innerHTML += `
+            <span class="taskTitle">${task.title}</span>
+            <span class="taskDate">${task.dueDate}</span>
+            `;
+        taskContent.appendChild(taskDiv);
+      }
     });
   });
 };
