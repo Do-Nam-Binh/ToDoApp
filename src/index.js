@@ -11,6 +11,7 @@ console.log(
 
 let task1 = new Task("test1", "this is a test", "2023-12-11", "Low");
 let task2 = new Task("test2", "this is a second test", "2024-01-23", "Low");
+let task3 = new Task("test3", "Test", new Date(), "High");
 
 console.log(task1);
 task1.toggleCheck();
@@ -24,6 +25,8 @@ projectArr.push(project1);
 projectArr.push(project2);
 project1.addTask(task1);
 project1.addTask(task2);
+
+project2.addTask(task3);
 
 console.log(project1);
 project1.tasks.forEach((element) => {

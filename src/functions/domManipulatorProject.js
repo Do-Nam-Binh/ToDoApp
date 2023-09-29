@@ -71,6 +71,7 @@ const loadAllProjects = function (projectArr) {
   });
   addEventAllProjects();
   addEventToday();
+  addEventNextWeek();
   addProjectInput();
 };
 
@@ -107,7 +108,7 @@ const loadAllProjectTask = function () {
   const taskContent1 = document.querySelector(".task-content");
   const projectDisplay = document.createElement("div");
   projectDisplay.classList.add("projectDisplay");
-  projectDisplay.textContent = "All Tasks";
+  projectDisplay.textContent = "All";
   taskContent1.appendChild(projectDisplay);
 
   projectList.forEach((project) => {
@@ -142,7 +143,7 @@ const loadTodayTask = function () {
   const taskContent1 = document.querySelector(".task-content");
   const projectDisplay = document.createElement("div");
   projectDisplay.classList.add("projectDisplay");
-  projectDisplay.textContent = "Today Tasks";
+  projectDisplay.textContent = "Today";
   taskContent1.appendChild(projectDisplay);
 
   projectList.forEach((project) => {
@@ -168,6 +169,59 @@ const loadTodayTask = function () {
             <span class="taskTitle">${task.title}</span>
             <span class="taskDate">${task.dueDate}</span>
             `;
+        taskContent.appendChild(taskDiv);
+      }
+    });
+  });
+};
+
+//Function to handle "Next 7 days" tab
+const addEventNextWeek = function () {
+  const todayDOM = document.querySelector(".nextWeekTasks");
+  todayDOM.addEventListener("click", loadNextWeekTask);
+};
+const loadNextWeekTask = function () {
+  clearTask();
+  const taskContent1 = document.querySelector(".task-content");
+  const projectDisplay = document.createElement("div");
+  projectDisplay.classList.add("projectDisplay");
+  projectDisplay.textContent = "Next 7 Days";
+  taskContent1.appendChild(projectDisplay);
+
+  projectList.forEach((project) => {
+    project.tasks.forEach((task) => {
+      const taskContent = document.querySelector(".task-content");
+      const taskDiv = document.createElement("div");
+      taskDiv.classList.add("task");
+      if (task.priority == "Low") {
+        taskDiv.classList.add("lowPriority");
+      } else if (task.priority == "Medium") {
+        taskDiv.classList.add("mediumPriority");
+      } else if (task.priority == "High") {
+        taskDiv.classList.add("highPriority");
+      }
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const nextSevenDay = new Date();
+      nextSevenDay.setHours(23, 59, 59, 999);
+      const nextSevenDayFormatted = new Date(
+        nextSevenDay.setDate(today.getDate() + 7)
+      );
+      const taskDueDate = new Date(task.dueDate);
+      const taskDueDateFormatted = new Date(
+        taskDueDate.setMonth(taskDueDate.getMonth())
+      );
+      console.log("task due: ", taskDueDateFormatted);
+      console.log("today: ", today);
+      console.log("next 7 days: ", nextSevenDay);
+      if (
+        today <= taskDueDateFormatted &&
+        taskDueDateFormatted <= nextSevenDayFormatted
+      ) {
+        taskDiv.innerHTML += `
+              <span class="taskTitle">${task.title}</span>
+              <span class="taskDate">${task.dueDate}</span>
+              `;
         taskContent.appendChild(taskDiv);
       }
     });
