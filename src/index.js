@@ -1,6 +1,5 @@
 import Task from "./functions/task";
 import Project from "./functions/project";
-import { loadAllTask } from "./functions/domManipulatorTask";
 import { loadAllProjects } from "./functions/domManipulatorProject";
 import "./css/style.css";
 
