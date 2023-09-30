@@ -1,7 +1,7 @@
 import { loadAllTask, clearTask } from "./domManipulatorTask";
 import Project from "./project";
 
-let projectList = [];
+export let projectList = [];
 
 const clearProjects = function () {
   const projects = document.querySelector(".projects");

@@ -1,5 +1,6 @@
 import Task from "./task";
 import Project from "./project";
+import { projectList } from "./domManipulatorProject";
 
 let currentProject;
 
@@ -103,6 +104,9 @@ const loadTask = function (task) {
   const taskContent = document.querySelector(".task-content");
   const taskDiv = document.createElement("div");
   taskDiv.classList.add("task");
+  taskDiv.classList.add(`${task.title}`);
+  taskDiv.classList.add(`${task.dueDate}`);
+
   if (task.priority == "Low") {
     taskDiv.classList.add("lowPriority");
   } else if (task.priority == "Medium") {
@@ -113,8 +117,39 @@ const loadTask = function (task) {
   taskDiv.innerHTML += `
   <span class="taskTitle">${task.title}</span>
   <span class="taskDate">${task.dueDate}</span>
+  <button class="removeTask ${task.title} ${task.dueDate}"><i class="fa fa-close"></i></button>
 `;
+
   taskContent.appendChild(taskDiv);
+
+  const removeTaskBtn = document.getElementsByClassName(
+    `removeTask ${task.title} ${task.dueDate}`
+  );
+
+  removeTaskBtn[0].addEventListener("click", () => {
+    deleteTask(task);
+  });
+};
+
+const deleteTask = function (task) {
+  //Remove task from list
+
+  projectList.forEach((project) => {
+    for (var i = project.tasks.length - 1; i >= 0; i--) {
+      if (
+        project.tasks[i].title == task.title &&
+        project.tasks[i].dueDate == task.dueDate
+      ) {
+        project.tasks.splice(i, 1);
+      }
+    }
+  });
+
+  //Remove dom of task
+  const taskDOM = document.getElementsByClassName(
+    `task ${task.title} ${task.dueDate}`
+  );
+  taskDOM[0].remove();
 };
 
 const createTask = function (project) {

@@ -45,11 +45,19 @@ body {
   margin: 10px;
   padding: 5px 0px;
   display: grid;
-  grid-template-columns: 80% 180px;
-  align-content: center;
+  grid-template-columns: 3.5fr 1fr 50px;
+  align-items: center;
   border: 1px solid black;
   padding: 10px;
   border-radius: 10px;
+}
+.removeTask {
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
 }
 
 .taskTitle {
