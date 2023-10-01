@@ -40,5 +40,8 @@ project1.tasks.forEach((element) => {
   console.log(element);
 });
 
-// localStorage.setItem("projectList", JSON.stringify(projectArr));
+if (localStorage.getItem("projectList") == null) {
+  localStorage.setItem("projectList", JSON.stringify(projectArr));
+}
+
 loadAllProjects();
