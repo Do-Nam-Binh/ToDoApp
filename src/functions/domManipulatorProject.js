@@ -4,6 +4,10 @@ import Project from "./project";
 export let projectList = [];
 let i;
 
+const saveProjectsToStorage = function (projectArr) {
+  localStorage.setItem("projectList", JSON.stringify(projectArr));
+};
+
 const clearProjects = function () {
   const projects = document.querySelector(".projects");
   projects.innerHTML = "Projects";
@@ -67,6 +71,7 @@ const clearAddProjectValue = function () {
 const loadAllProjects = function () {
   i = 0;
   clearProjects();
+  projectList = JSON.parse(localStorage.getItem("projectList"));
   projectList.forEach((project) => {
     loadProjects(project);
   });
@@ -122,6 +127,8 @@ const deleteProject = function (project, j) {
   //Clear task tab
   const taskContent = document.querySelector(".task-content");
   taskContent.innerHTML = "";
+
+  saveProjectsToStorage(projectList);
 };
 
 const createProject = function (projectArr) {
@@ -130,6 +137,7 @@ const createProject = function (projectArr) {
   const project = new Project(projectName.value);
 
   projectArr.push(project);
+  saveProjectsToStorage(projectArr);
 };
 
 //Functions to handle "All Tasks" tab
@@ -263,4 +271,4 @@ const loadNextWeekTask = function () {
   });
 };
 
-export { loadAllProjects };
+export { loadAllProjects, saveProjectsToStorage };

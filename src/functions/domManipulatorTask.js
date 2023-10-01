@@ -1,6 +1,7 @@
 import Task from "./task";
 import Project from "./project";
 import { projectList } from "./domManipulatorProject";
+import { saveProjectsToStorage } from "./domManipulatorProject";
 
 let currentProject;
 
@@ -133,7 +134,6 @@ const loadTask = function (task) {
 
 const deleteTask = function (task) {
   //Remove task from list
-
   projectList.forEach((project) => {
     for (var i = project.tasks.length - 1; i >= 0; i--) {
       if (
@@ -150,6 +150,8 @@ const deleteTask = function (task) {
     `task ${task.title} ${task.dueDate}`
   );
   taskDOM[0].remove();
+
+  saveProjectsToStorage(projectList);
 };
 
 const createTask = function (project) {
@@ -167,6 +169,7 @@ const createTask = function (project) {
   );
 
   project.tasks.push(task);
+  saveProjectsToStorage(projectList);
 };
 
 export { loadAllTask, clearTask };

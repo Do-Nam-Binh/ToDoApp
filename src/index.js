@@ -2,7 +2,7 @@ import Task from "./functions/task";
 import Project from "./functions/project";
 import { loadAllProjects } from "./functions/domManipulatorProject";
 import "./css/style.css";
-import { projectList } from "./functions/domManipulatorProject";
+// import { projectList } from "./functions/domManipulatorProject";
 
 const today = new Date();
 console.log(
@@ -22,8 +22,8 @@ let projectArr = [];
 let project1 = new Project("Test Project 1");
 let project2 = new Project("Test Project 2");
 
-projectList.push(project1);
-projectList.push(project2);
+projectArr.push(project1);
+projectArr.push(project2);
 project1.addTask(task1);
 project1.addTask(task2);
 
@@ -40,4 +40,5 @@ project1.tasks.forEach((element) => {
   console.log(element);
 });
 
+// localStorage.setItem("projectList", JSON.stringify(projectArr));
 loadAllProjects();
