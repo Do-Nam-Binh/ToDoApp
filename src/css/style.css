@@ -98,6 +98,20 @@ body {
   background-color: rgba(244, 64, 64, 0.6);
 }
 
+.project {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 30px;
+}
+
+.deleteProject {
+  display: none;
+}
+
+.project:hover > .deleteProject {
+  display: inline;
+}
+
 .home,
 .projects {
   display: grid;

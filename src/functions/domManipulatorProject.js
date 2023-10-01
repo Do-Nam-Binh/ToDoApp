@@ -2,6 +2,7 @@ import { loadAllTask, clearTask } from "./domManipulatorTask";
 import Project from "./project";
 
 export let projectList = [];
+let i;
 
 const clearProjects = function () {
   const projects = document.querySelector(".projects");
@@ -63,10 +64,10 @@ const clearAddProjectValue = function () {
   projectName.value = "";
 };
 
-const loadAllProjects = function (projectArr) {
+const loadAllProjects = function () {
+  i = 0;
   clearProjects();
-  projectList = projectArr;
-  projectArr.forEach((project) => {
+  projectList.forEach((project) => {
     loadProjects(project);
   });
   addEventAllProjects();
@@ -78,15 +79,49 @@ const loadAllProjects = function (projectArr) {
 const loadProjects = function (project) {
   const userProjects = document.querySelector(".projects");
   const projectDOM = document.createElement("div");
-  projectDOM.classList.add("project");
-  projectDOM.textContent = `${project.name}`;
+  projectDOM.classList.add(`project`);
+  projectDOM.classList.add(`${i}`);
+  projectDOM.innerHTML = `<div class = "projectTab ${project.name} ${i}">${project.name}</div>
+  <button class="deleteProject ${project.name} ${i}"><i class="fa fa-close"></i></button>`;
+  userProjects.appendChild(projectDOM);
 
-  projectDOM.addEventListener("click", function () {
+  const projectTab = document.getElementsByClassName(
+    `projectTab ${project.name} ${i}`
+  );
+
+  const deleteProjectBtn = document.getElementsByClassName(
+    `deleteProject ${project.name} ${i}`
+  );
+
+  projectTab[0].addEventListener("click", function () {
     clearTask();
     console.log(project);
     loadAllTask(project);
   });
-  userProjects.appendChild(projectDOM);
+  let j = i;
+
+  deleteProjectBtn[0].addEventListener("click", () => {
+    deleteProject(project, j);
+  });
+
+  i = i + 1;
+  //   userProjects.appendChild(projectDOM);
+};
+
+const deleteProject = function (project, j) {
+  if (project.tasks.length == 0) {
+    projectList.splice(j, 1);
+  } else {
+    alert("Cannot delete project that still have tasks");
+    return;
+  }
+
+  //Remove dom of project
+  const projectDOM = document.getElementsByClassName(`project ${j}`);
+  projectDOM[0].remove();
+  //Clear task tab
+  const taskContent = document.querySelector(".task-content");
+  taskContent.innerHTML = "";
 };
 
 const createProject = function (projectArr) {
